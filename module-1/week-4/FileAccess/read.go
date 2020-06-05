@@ -18,7 +18,7 @@ func main() {
 	var filename string
 	fmt.Printf("Enter the name of the file\n")
 	fmt.Scan(&filename)
-	totalData := make([]name, 100)
+	totalData := make([]name, 0, 100)
 	file, err := os.OpenFile(filename + ".txt", os.O_RDWR|os.O_CREATE, 0755)
 	if err != nil {
 		log.Fatal(err)
@@ -43,6 +43,8 @@ func main() {
 	for _, v := range totalData {
 		os.Stdout.WriteString(v.fname + " " + v.lname)
 	}
+
+	// fmt.Printf("\nLed Zeppelin lead vocals " + totalData[5].fname + " " +  totalData[5].lname)
 	// if err != io.EOF {
 	// 	fmt.Printf("Failed to read because %v\n", err)
 	// }
