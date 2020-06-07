@@ -53,21 +53,21 @@ func main() {
 
 	wg.Wait()
 	
-	// appendSlice(slice1, sortedSlice)
-	// appendSlice(slice2, sortedSlice)
-	// appendSlice(slice3, sortedSlice)
-	// appendSlice(slice4, sortedSlice)
-	sortedSlice = append(sortedSlice, slice1...)
-	sortedSlice = append(sortedSlice, slice2...)
-	sortedSlice = append(sortedSlice, slice3...)
-	sortedSlice = append(sortedSlice, slice4...)
-	
+	appendSlice(&slice1, &sortedSlice)
+	appendSlice(&slice2, &sortedSlice)
+	appendSlice(&slice3, &sortedSlice)
+	appendSlice(&slice4, &sortedSlice)
+	// sortedSlice = append(sortedSlice, slice1...)
+	// sortedSlice = append(sortedSlice, slice2...)
+	// sortedSlice = append(sortedSlice, slice3...)
+	// sortedSlice = append(sortedSlice, slice4...)
+
 	sort.Ints(sortedSlice)
 	fmt.Printf("%v", sortedSlice)
 }
 
-// func appendSlice (ss []int, s []int) {
-// 	for _, v := range ss {
-// 		s = append(s,v)
-// 	}
-// }
+func appendSlice (ss *[]int, s *[]int) {
+	for _, v := range *ss {
+		*s = append(*s,v)
+	}
+}
